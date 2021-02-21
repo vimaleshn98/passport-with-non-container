@@ -26,59 +26,7 @@ pipeline{
               }
             }
           }
-        stage("Test"){
-            steps{
-                echo "Maven Test"
-                bat 'mvn test'
-            }
-            post{
-                success{
-                    junit 'target/surefire-reports/**/*.xml'
-                    echo "========Maven Test stage executed successfully  ${New_Version}========"
-
-                }
-                failure{
-                    echo "========Maven Test stage execution failed========"
-                }
-            }
-        }
-         stage("Packaging"){
-            steps{
-                echo "Maven Packaging"
-                bat 'mvn package'
-            }
-            post{
-                success{
-                    archiveArtifacts 'target/*.jar'
-                    echo "========Maven Packaging stage executed successfully  ${New_Version}========"
-
-                }
-                
-                failure{
-                    echo "========Maven Packaging stage execution failed========"
-                }
-            }
-        }
-          stage("Deployee"){
-           when {
-                expression {
-                        currentBuild.result == null || currentBuild.result == 'SUCCESS'
-                }
-            }
-                steps {
-                    echo "========Deploying  ${New_Version}========"
-                    }
-            post{
-                success{
-                    echo "========Deploying executed successfully  ${New_Version}========"
-
-                }
-                
-                failure{
-                    echo "========Deploying stage execution failed========"
-                }
-            }
-        }
+       
     }
     post{
         always{
