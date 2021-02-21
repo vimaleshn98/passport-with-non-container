@@ -1,8 +1,5 @@
 pipeline{
-    agent any
-    environment{
-        New_Version = '1.0.3'
-    }
+    
     stages{
         stage("Build"){
             steps{
@@ -18,14 +15,6 @@ pipeline{
                 }
             }
         }
-        stage("build & SonarQube analysis") {
-            agent any
-            steps {
-              withSonarQubeEnv('sonarqube') {
-                bat 'mvn verify sonar:sonar'
-              }
-            }
-          }
        
     }
     post{
