@@ -7,6 +7,7 @@ pipeline{
         stage("Build"){
             steps{
                 bat 'mvn -version'
+                bat 'mvn compile'
             }
             post{
                 success{
@@ -28,7 +29,7 @@ pipeline{
           stage("Test"){
             steps{
                 echo "Maven Test"
-                sh 'mvn test'
+                bat 'mvn test'
             }
             post{
                 success{
@@ -45,7 +46,7 @@ pipeline{
         stage("Packaging"){
             steps{
                 echo "Maven Packaging"
-                sh 'mvn package'
+                bat 'mvn package'
             }
             post{
                 success{
