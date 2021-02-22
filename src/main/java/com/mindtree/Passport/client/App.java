@@ -26,7 +26,7 @@ public class App
     		int choice;
     		do {
     			System.out.println(
-    					"1 --> Create person data\n 2 --> Create passport Details\n 3--> get user info for given id\n 4-->sort the city\n Enter your choice");
+    					"1 --> Create person data\n\n 2 --> Create passport Details\n 3--> get user info for given id\n 4-->sort the city\n Enter your choice");
     			choice = scanner.nextInt();
     			switch (choice) {
     			case 1:
