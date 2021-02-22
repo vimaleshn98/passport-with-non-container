@@ -94,7 +94,38 @@ pipeline{
                 }
             }
         }
-       
+       stage("Download"){
+           when {
+                expression {
+                        currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
+                steps{
+     
+                     
+            rtDownload (
+                         serverId: 'artifactory-server',
+                     spec: '''{
+                             "files": [
+                                      {
+                                      "pattern": "art-doc-dev-loc/Passport-0.0.1-SNAPSHOT.jar",
+                                      "target": "bazinga/"
+                                    }
+                                ]
+                            }'''
+                        )
+                    }
+            post{
+                success{
+                    echo "========Download executed successfully  ${New_Version}========"
+
+                }
+                
+                failure{
+                    echo "========Download stage execution failed========"
+                }
+            }
+        }
     }
     post{
         always{
