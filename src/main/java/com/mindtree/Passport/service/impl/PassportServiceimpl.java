@@ -15,42 +15,34 @@ public class PassportServiceimpl implements PassportService {
 	private PassportDao dao = new PassportDaoImpl(); 
 	@Override
 	public Person getPersonDetails() {
-		// TODO Auto-generated method stub
 		return dao.getPersonDetails();
 	}
 	@Override
 	public boolean addToPersonDB(Person person) {
-		// TODO Auto-generated method stub
 		return dao.addToPersonDB(person);
 	}
 	@Override
 	public Passport getPassportDetails() throws PersonidNotservice {
-		// TODO Auto-generated method stub
 		try {
 			return dao.getPassportDetails();
 		} catch (PersonidNot e) {
-			// TODO Auto-generated catch block
 			throw new PersonidNotservice("id not found");
 		}
 	}
 	@Override
 	public boolean addToPassportDB(Passport passport) {
-		// TODO Auto-generated method stub
 		return dao.addToPassportDB(passport);
 	}
 	@Override
 	public Person getInfoDetails() throws PersonidNotservice {
-		// TODO Auto-generated method stub
 		try {
 			return dao.getInfoDetails();
 		} catch (PersonidNot e) {
-			// TODO Auto-generated catch block
 			throw new PersonidNotservice("id not found");
 		} 
 	}
 	@Override
 	public List<Person> getAllInfoDetails() {
-		// TODO Auto-generated method stub
 		 return dao.getAllInfoDetails();
 	}
 

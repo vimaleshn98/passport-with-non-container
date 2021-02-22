@@ -21,7 +21,6 @@ public class PassportDaoImpl implements PassportDao {
 	
 	@Override
 	public Person getPersonDetails() {
-		// TODO Auto-generated method stub
 		System.out.println("enter the person id");
 		short id = scanner.nextShort();
 		System.out.println("enter the person name");
@@ -36,7 +35,6 @@ public class PassportDaoImpl implements PassportDao {
 
 	@Override
 	public boolean addToPersonDB(Person person) {
-		// TODO Auto-generated method stub
 		PreparedStatement preparedStatement = null;
 		try {
 			Connection con = DataBase.getConnection();
@@ -52,9 +50,7 @@ public class PassportDaoImpl implements PassportDao {
 			} else
 				return false;
 		} catch (SQLIntegrityConstraintViolationException e) {
-			// TODO: handle exception
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -62,7 +58,6 @@ public class PassportDaoImpl implements PassportDao {
 
 	@Override
 	public Passport getPassportDetails() throws PersonidNot {
-		// TODO Auto-generated method stub
 		System.out.println("enter the person id");
 		short id = scanner.nextShort();
 		boolean p;
@@ -80,7 +75,6 @@ public class PassportDaoImpl implements PassportDao {
 	}
 
 	private boolean getIdOfPerson(short id) throws PersonidNot {
-		// TODO Auto-generated method stub
 		try {
 			Connection con = DataBase.getConnection();
 			Statement st = con.createStatement();
@@ -92,7 +86,6 @@ public class PassportDaoImpl implements PassportDao {
 				return true;
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			throw new PersonidNot("id not found");
 		}
 
@@ -100,7 +93,6 @@ public class PassportDaoImpl implements PassportDao {
 
 	@Override
 	public boolean addToPassportDB(Passport passport) {
-		// TODO Auto-generated method stub
 		try {
 			Connection con = DataBase.getConnection();
 			String sql2 = "insert into Passport values(?,?,?)";
@@ -114,9 +106,7 @@ public class PassportDaoImpl implements PassportDao {
 			} else
 				return false;
 		} catch (SQLIntegrityConstraintViolationException e) {
-			// TODO: handle exception
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -124,7 +114,6 @@ public class PassportDaoImpl implements PassportDao {
 
 	@Override
 	public Person getInfoDetails() throws PersonidNot {
-		// TODO Auto-generated method stub
 		System.out.println("enter the person id");
 		short id = scanner.nextShort();
 		try {
@@ -135,7 +124,6 @@ public class PassportDaoImpl implements PassportDao {
 			rs.next();
 			return new Person(rs.getShort("id"), rs.getString("name"), rs.getString("place"), rs.getShort("age"),new Passport(rs.getShort("passid"), rs.getString("passnum")));
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			throw new PersonidNot("id not found");
 		}
 
@@ -143,7 +131,6 @@ public class PassportDaoImpl implements PassportDao {
 
 	@Override
 	public List<Person> getAllInfoDetails() {
-		// TODO Auto-generated method stub
 		List<Person> ls = new ArrayList<Person>();
 		try {
 			Connection con = DataBase.getConnection();
@@ -156,7 +143,6 @@ public class PassportDaoImpl implements PassportDao {
 			}
 			return ls;
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

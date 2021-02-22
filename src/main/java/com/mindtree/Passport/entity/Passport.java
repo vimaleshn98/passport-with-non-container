@@ -6,7 +6,6 @@ public class Passport {
 	private short id ;
 	
 	public Passport() {
-		// TODO Auto-generated constructor stub
 	}
 	
 

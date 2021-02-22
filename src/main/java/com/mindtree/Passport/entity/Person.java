@@ -18,7 +18,6 @@ public class Person {
 	}
 
 	public Person() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Person(short id, String name, String place, short age) {

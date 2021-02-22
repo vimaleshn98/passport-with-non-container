@@ -11,11 +11,6 @@ import com.mindtree.Passport.exception.serviceexception.PersonidNotservice;
 import com.mindtree.Passport.service.PassportService;
 import com.mindtree.Passport.service.impl.PassportServiceimpl;
 
-
-/**
- * Hello world!
- *
- */
 public class App 
 {
 	private static Scanner scanner = new Scanner(System.in);
@@ -49,7 +44,6 @@ public class App
 	    					System.out.println("not insertd successfully");
 	    				}
 					} catch (PersonidNotservice e) {
-						// TODO Auto-generated catch block
 						System.out.println(e.getMessage());
 					}
     				break;

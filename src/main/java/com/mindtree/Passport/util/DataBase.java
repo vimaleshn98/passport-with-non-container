@@ -42,7 +42,6 @@ public class DataBase {
 			if (preparedStatement != null)
 				preparedStatement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
