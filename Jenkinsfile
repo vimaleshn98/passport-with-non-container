@@ -60,12 +60,6 @@ pipeline{
                 }
             }
         }
-        stage('collect artifact'){
-     steps{
-     archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-     }
-     }
-     
           stage("Deployee"){
            when {
                 expression {
@@ -83,11 +77,7 @@ pipeline{
                                      "target": "art-doc-dev-loc"
                                     }
                                 ]
-                            }''',
- 
-  
-                        buildName: 'holyFrog',
-                        buildNumber: '42'
+                            }'''
                         )
                     }
             post{
