@@ -3,12 +3,11 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                echo "Maven compiling"
                 bat 'mvn -version'
             }
             post{
                 success{
-                    echo "========Maven compile stage executed successfully ${New_Version}========"
+                    echo "========Maven compile stage executed successfully========"
                 }
                 failure{
                     echo "========Maven compile stage execution failed========"
@@ -16,10 +15,9 @@ pipeline{
             }
         }
         stage("build & SonarQube analysis") {
-            agent any
             steps {
               withSonarQubeEnv('sonarqube') {
-                sh 'mvn verify sonar:sonar'
+                bat 'mvn verify sonar:sonar'
               }
             }
           }
@@ -27,7 +25,7 @@ pipeline{
     }
     post{
         always{
-            echo "========Running ${env.BUILD_ID} on ${env.JENKINS_URL}========"
+            echo "========Running on ========"
         }
         changed{
                     echo "========Their is change in Packaging from pervious========"
