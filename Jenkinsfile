@@ -4,7 +4,7 @@ pipeline{
         stage("Build"){
             steps{
                 echo "Maven compiling"
-                bat 'mvn compile'
+                bat 'mvn -version'
             }
             post{
                 success{
@@ -15,6 +15,14 @@ pipeline{
                 }
             }
         }
+        stage("build & SonarQube analysis") {
+            agent any
+            steps {
+              withSonarQubeEnv('sonarqube') {
+                sh 'mvn verify sonar:sonar'
+              }
+            }
+          }
        
     }
     post{
