@@ -3,6 +3,9 @@ pipeline{
     environment{
         New_Version = '1.0.3'
     }
+     triggers {
+    cron('* * * * *')
+  }
     stages{
         stage("Build"){
             steps{
