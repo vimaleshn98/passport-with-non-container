@@ -2,7 +2,6 @@ pipeline{
     agent any
     environment{
         New_Version = '1.0.3'
-        currentBuild.displayName = 'passport'
     }
 //      triggers {
 //     cron('* * * * *')
