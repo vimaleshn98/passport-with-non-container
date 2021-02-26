@@ -18,19 +18,7 @@ pipeline{
                 }
             }
         }
-        stage("build & SonarQube analysis") {
-            steps {
-              withSonarQubeEnv('sonarqube') {
-                sh 'mvn verify sonar:sonar'
-              }
-            }
-          }
-
-          stage("Quality gate") {
-            steps {
-                  echo "quality gate "
-            }
-        }
+        
 
           stage("Test"){
             steps{
